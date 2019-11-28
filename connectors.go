@@ -182,3 +182,9 @@ func (c *Client) RestartConnector(name string) (*http.Response, error) {
 	path := fmt.Sprintf("connectors/%v/restart", name)
 	return c.doRequest("POST", path, nil, nil)
 }
+
+// RestartConnectorTask restarts a connector's task.
+func (c *Client) RestartConnectorTask(name string, taskID int) (*http.Response, error) {
+	path := fmt.Sprintf("connectors/%v/tasks/%v/restart", name, taskID)
+	return c.doRequest("POST", path, nil, nil)
+}
